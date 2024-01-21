@@ -1,0 +1,9 @@
+{% extends 'diary_base.html' %}
+{% load static %}
+{% block title %}diary{% endblock %}
+
+    {% block contents %}
+    {% include "diary_display_title.html" %}
+    {% include "diary_display_list.html" %}
+    {% include "diary_pagination.html" %}
+    {% endblock %}

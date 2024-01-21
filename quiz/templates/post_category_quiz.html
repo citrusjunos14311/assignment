@@ -1,0 +1,23 @@
+{% extends 'quiz_base.html' %}
+{% block title %}Post{% endblock %}
+    {% block contents %}
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col offset-2">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <th>50文字以内でお願いします</th>
+                            <td>{{ form }}</td>
+                        </tr>
+                        <tr>
+                    </table>
+                    <hr>
+                    <button type="submit">投稿する</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

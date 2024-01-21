@@ -1,0 +1,9 @@
+{% extends 'chicks_base.html' %}
+{% load static %}
+{% block title %}chicks{% endblock %}
+
+    {% block contents %}
+    {% include "display_title.html" %}
+    {% include "display_list.html" %}
+    {% include "pagination.html" %}
+    {% endblock %}

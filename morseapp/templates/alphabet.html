@@ -1,0 +1,30 @@
+{% extends 'morse_base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+
+    {% block contents %}
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <p>アルファベットをモールス信号にモールス信号をアルファベットにするよ</p>
+                <p>※アルファベットは半角でお願いします</p>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="">
+                        <label>入力</label>
+                        <textarea name="name1" cols="40" rows="10" placeholder="メッセージを入力してください" class="form-control" required id="name1" style="height: 204px;">{{ messagepost }}</textarea>
+                    </div>
+                    <input type="submit" value="変換">
+                </form>
+            </div>
+            <div>
+                <form action="" method="POST">
+                    <div class="">
+                        <label>出力</label>
+                        <textarea name="name2" cols="40" rows="10" placeholder="こちらには入力しないでください" class="form-control" required id="name2" style="height: 204px;">{{ messageget }}</textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

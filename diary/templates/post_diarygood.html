@@ -1,0 +1,47 @@
+{% extends 'diary_base.html' %}
+{% block title %}diary{% endblock %}
+{% block contents %}
+<div class="container">
+<div class="row">
+    <div class="col offset-3">
+        <h2>{{ChickPost.title}}</h2>
+        <p>{{ChickPost.comment}}</p>
+        <br>
+        <p>{{ChickPost.posted_at}}に投稿</p>
+        {% if ChickPost.image %}
+        <p><img src="{{ ChickPost.image.url }}" style="max-width: 200px;"></p>
+        {% endif %}
+        {% if request.user == ChickPost.user %}
+        <form method="POST">
+            <a href="{% url 'diary:diary_delete' ChickPost.pk %}" class="btn btn-primary my-2">削除する</a>
+        </form>
+        {% endif %}
+        <p>{{ChickPost.user}}</p>
+    </div>
+</div>
+</div>
+<br>
+<h3 style="text-align: center;">{{ Comment|length }}件のいいね</h3>
+<br>
+</div>
+</div>
+<hr>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col offset-2">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <th>対象</th>
+                        <td>{{form.post}}</td>
+                    </tr>
+                </table>
+                <hr>
+                <button type="submit">投稿する</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

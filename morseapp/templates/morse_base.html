@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    </head>
+    <body style="min-width: 850px; ">
+        <div style="background-color: #26d0c9;  text-align: center;">
+            <div class="container">
+                <footer class="py-3 my-4">
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item"><a href="{% url 'assignmentapp:index' %}" class="nav-link px-2 text-body-secondary">ホーム</a></li>
+                        <li class="nav-item"><a href="{% url 'morseapp:index' %}" class="nav-link px-2 text-body-secondary">morse</a></li>
+                        <li class="nav-item"><a href="{% url 'morseapp:contact' %}" class="nav-link px-2 text-body-secondary">ご意見・ご要望</a></li>
+                        <li class="nav-item"><a href="{% url 'morseapp:japanese_language' %}" class="nav-link px-2 text-body-secondary">ひらがな</a></li>
+                        <li class="nav-item"><a href="{% url 'morseapp:alphabet' %}" class="nav-link px-2 text-body-secondary">アルファベット</a></li>
+                    </ul>
+                </footer>
+            </div>
+        </div>
+        
+        {% block contents %}{% endblock %}
+        
+        <div style="display: flex; align-items: flex-end; background-color: #2f5167; color:#fff;min-height: 120px;">
+            <s style="padding: 10px;">
+                <a style="text-decoration: none;"class="" href="{% url 'morseapp:japanese_language_change_morse' %}">ひらがなからモールス信号に変換</a>
+            </s>
+            <s style="padding: 10px;">
+                <a style="text-decoration: none;"class="" href="{% url 'morseapp:morse_change_japanese_language' %}">モールス信号からひらがなに変換</a>
+            </s>
+            <s style="padding: 10px;">
+                <a style="text-decoration: none;"class="" href="{% url 'morseapp:alphabet_change_morse' %}">アルファベットからモールス信号に変換</a>
+            </s>
+            <s style="padding: 10px;">
+                <a style="text-decoration: none;"class="" href="{% url 'morseapp:morse_change_alphabet' %}">モールス信号からアルファベットに変換</a>
+            </s>
+            <small style="margin-left: auto;">&copy; 2023.citrus.junos</small>
+        </div>
+    </body>
+    </html>

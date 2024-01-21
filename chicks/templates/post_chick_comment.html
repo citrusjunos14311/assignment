@@ -1,0 +1,79 @@
+{% extends 'chicks_base.html' %}
+{% block title %}Post Comment{% endblock %}
+    {% block contents %}
+    <div class="container">
+        <div class="row">
+            <div class="col offset-3">
+                <h2>{{ChickPost.title}}</h2>
+                <p>{{ChickPost.comment}}</p>
+                <br>
+                <p>{{ChickPost.posted_at}}に投稿</p>
+                {% if ChickPost.image %}
+                <p><img src="{{ ChickPost.image.url }}" style="max-width: 200px;"></p>
+                {% endif %}
+                {% if request.user == ChickPost.user %}
+                    <form method="POST">
+                        <a href="{% url 'chicks:chicks_delete' ChickPost.pk %}" class="btn btn-primary my-2">削除する</a>
+                    </form>
+                {% endif %}
+                <p>{{ChickPost.user}}</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <h3 style="text-align: center;">{{ Comment|length }}件のコメント</h3>
+    <br>
+    {% for num in Comment %}
+    <hr>
+        <div class="container">
+                <div class="row">
+                    <div class="col offset-3">
+                        <p>ID No.{{num.id}}</p>
+                        <p>{{num.thoughts_on_comment}}</p>
+                        <br>
+                        <p>{{num.posted_at}}に投稿</p>
+                        {% if num.comment_image %}
+                        <p><img src="{{ num.comment_image.url }}" style="max-width: 200px;"></p>
+                        {% endif %}
+                        {% if request.user == num.comment_user %}
+                            <form method="POST">
+                                <a href="{% url 'chicks:comment_delete' num.pk %}" class="btn btn-primary my-2">削除する</a>
+                            </form>
+                        {% endif %}
+                        {{ num.comment_user }}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div style="text-align: center;">リプライはありません。</div>
+            {% endfor %}
+        </div>
+    </div>
+    <hr>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col offset-2">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <th>対象</th>
+                            <td>{{ form.post}}</td>
+                        </tr>
+                        <tr>
+                            <th>コメント</th>
+                            <td>{{ form.thoughts_on_comment}}</td>
+                        </tr>
+                        <tr>
+                            <th>画像</th>
+                            <td>{{ form.comment_image }}</td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <button type="submit">投稿する</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

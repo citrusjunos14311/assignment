@@ -1,0 +1,21 @@
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for record in object_list %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <p class="card-text">{{record.quiz|truncatechars:15}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='{% url 'quiz:quiz_detail' record.id %}'">チャレンジ</button>
+                </div>
+                <a style="text-decoration: none;" href="{% url 'quiz:user_list' user=record.user.id %}"><small class="text-muted">{{ record.user.username }}</small></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,9 @@
+{% extends 'quiz_base.html' %}
+{% load static %}
+{% block title %}quiz{% endblock %}
+
+    {% block contents %}
+    {% include "quiz_display_title.html" %}
+    {% include "quiz_display_list.html" %}
+    {% include "quiz_pagination.html" %}
+    {% endblock %}

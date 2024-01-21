@@ -1,0 +1,24 @@
+{% extends 'quiz_base.html' %}
+{% block title %}quiz Datail{% endblock %}
+    {% block contents %}
+    <div class="container">
+        <div class="row">
+            <div class="col offset-3">
+                <h2>{{object.category}}</h2>
+                <p>{{object.quiz}}</p>
+                <br>
+                <p>{{object.answer}}</p>
+                <br>
+                <p>{{object.posted_at}}に投稿</p>
+                <form method="POST">
+                    <a href="{% url 'quiz:index' %}" class="btn btn-primary my-2">quiz</a>
+                </form>
+                {% if request.user == object.user %}
+                    <form method="POST">
+                        <a href="{% url 'quiz:quiz_delete' object.pk %}" class="btn btn-primary my-2">削除する</a>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endblock %}
