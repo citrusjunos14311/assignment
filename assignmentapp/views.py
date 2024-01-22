@@ -16,7 +16,7 @@ class SecretView(TemplateView):
     template_name='assignment_secret.html'
     def post(self, request, *args, **kwargs):
         if request.POST:
-            num = random.randint(1,4)
+            num = random.randint(1,3)
             if num == 1:
                 message1="おまえん家、おっばけや～しき～"
                 message2="カンター"
