@@ -26,9 +26,6 @@ class SecretView(TemplateView):
             if num == 3:
                 message1="残念"
                 message2="なにもないぞ"
-            if num == 4:
-                message1="空からラーメンが降ってくる夢を見た"
-                message2="熱いわ"
         context = {
                 'message1':message1,
                 'message2':message2,
