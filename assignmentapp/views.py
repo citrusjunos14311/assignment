@@ -18,7 +18,7 @@ class SecretView(TemplateView):
         if request.POST:
             num = random.randint(1,3)
             if num == 1:
-                message1="おまえん家、おっばけや～しき～"
+                message1="おまえんち、おっばけや～しき～"
                 message2="カンター"
             if num == 2:
                 message1="(´･ω･`)"
